@@ -654,54 +654,82 @@
               <span>O que são Objetos?</span>
             </div>
             <p>
-              Objetos são estruturas que armazenam dados relacionados em pares
-              chave-valor. Como uma caixa organizada com etiquetas!
+              <strong>Objetos são como caixas organizadas</strong> que guardam
+              informações relacionadas. Cada informação tem um nome (chave) e um
+              valor.
             </p>
 
             <div class="code-block">
-              // Um objeto é como uma caixa com compartimentos const pessoa = {
-              nome: "Ana", // 🧱 propriedade idade: 25, // 🧱 propriedade falar:
-              function() { // 🧰 método return "Olá!"; } };
+              // Um objeto é como uma ficha de personagem const pessoa = { nome:
+              "Ana", // 🧱 propriedade (texto) idade: 25, // 🧱 propriedade
+              (número) ativa: true, // 🧱 propriedade (boolean) falar:
+              function() { // 🧰 método (função) return "Olá, eu sou " +
+              this.nome + "!"; } }; // Usando o objeto console.log(pessoa.nome);
+              // "Ana" console.log(pessoa.falar()); // "Olá, eu sou Ana!"
             </div>
 
             <div class="tip-box">
-              <strong>Dica:</strong> Pense em objetos como fichas de personagens
-              de RPG - cada um tem suas características únicas!
+              <strong>💡 Analogia:</strong> Pense em objetos como fichas de
+              personagens de RPG - cada ficha tem nome, idade, habilidades, etc.
+              Tudo organizado em um só lugar!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🧱</span>
-              <span>Propriedades</span>
+              <span>Propriedades (Características)</span>
             </div>
             <p>
-              Propriedades são as características do objeto. Como os atributos
-              de um personagem!
+              <strong>Propriedades são as características</strong> do objeto.
+              Como cor dos olhos, altura, nome - tudo que descreve o objeto.
             </p>
 
             <div class="code-block">
-              const carro = { marca: "Toyota", // 🧱 propriedade cor: "azul", //
-              🧱 propriedade ano: 2023 // 🧱 propriedade }; // Acessando
-              propriedades console.log(carro.marca); // "Toyota"
-              console.log(carro["cor"]); // "azul"
+              // Criando um objeto carro com suas características const carro =
+              { marca: "Toyota", // 🧱 texto cor: "azul", // 🧱 texto ano: 2023,
+              // 🧱 número automatico: true // 🧱 verdadeiro/falso }; // 2
+              formas de acessar propriedades: console.log(carro.marca); //
+              "Toyota" (notação ponto) console.log(carro["cor"]); // "azul"
+              (notação colchetes) // Verificando se existe
+              console.log(carro.modelo); // undefined (não existe)
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Quando usar cada notação:</strong><br />
+              • Use <code>objeto.propriedade</code> quando souber o nome<br />
+              • Use <code>objeto["propriedade"]</code> quando o nome for
+              variável
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🧰</span>
-              <span>Métodos</span>
+              <span>Métodos (Ações)</span>
             </div>
             <p>
-              Métodos são funções dentro de objetos. São as "habilidades" que o
-              objeto pode executar!
+              <strong>Métodos são as ações</strong> que o objeto pode fazer.
+              Como andar, falar, calcular - são as "habilidades" do objeto.
             </p>
 
             <div class="code-block">
-              const calculadora = { somar: function(a, b) { // 🧰 método return
-              a + b; }, multiplicar(a, b) { // 🧰 método (sintaxe moderna)
-              return a * b; } }; console.log(calculadora.somar(2, 3)); // 5
+              // Objeto com diferentes tipos de métodos const calculadora = { //
+              Método tradicional somar: function(a, b) { return a + b; }, //
+              Método moderno (ES6) multiplicar(a, b) { return a * b; }, //
+              Método que usa outras propriedades historico: [],
+              salvarCalculo(resultado) { this.historico.push(resultado); return
+              "Cálculo salvo!"; } }; // Usando os métodos
+              console.log(calculadora.somar(2, 3)); // 5
+              console.log(calculadora.multiplicar(4, 5)); // 20
+              console.log(calculadora.salvarCalculo(25)); // "Cálculo salvo!"
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Diferença importante:</strong><br />
+              • <strong>Propriedade:</strong> guarda um valor<br />
+              • <strong>Método:</strong> executa uma ação e pode retornar um
+              valor
             </div>
           </div>
         </div>
@@ -729,12 +757,27 @@
               <span>➕</span>
               <span>Adicionando Propriedades</span>
             </div>
+            <p>
+              <strong>Você pode adicionar novas propriedades</strong> a qualquer
+              objeto depois de criá-lo. É como adicionar novos itens à sua
+              mochila!
+            </p>
 
             <div class="code-block">
-              const jogador = { nome: "Mario" }; // Adicionando novas
-              propriedades jogador.pontos = 100; jogador["vidas"] = 3;
-              jogador.poder = "Super"; console.log(jogador); // { nome: "Mario",
-              pontos: 100, vidas: 3, poder: "Super" }
+              // Começando com um objeto simples const jogador = { nome: "Mario"
+              }; // Adicionando propriedades depois jogador.pontos = 100; //
+              Usando notação ponto jogador["vidas"] = 3; // Usando colchetes
+              jogador.poder = "Super"; // Mais uma propriedade // Verificando o
+              resultado console.log(jogador); // { nome: "Mario", pontos: 100,
+              vidas: 3, poder: "Super" } // Também funciona com métodos!
+              jogador.pular = function() { return this.nome + " está pulando!
+              🦘"; };
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Flexibilidade:</strong> JavaScript permite adicionar
+              propriedades dinamicamente. Isso é muito útil para adaptar objetos
+              conforme necessário!
             </div>
           </div>
 
@@ -743,41 +786,84 @@
               <span>🗑️</span>
               <span>Removendo Propriedades</span>
             </div>
+            <p>
+              <strong>Use <code>delete</code> para remover propriedades</strong>
+              que não precisa mais. Como tirar itens desnecessários da mochila.
+            </p>
 
             <div class="code-block">
-              const inventario = { espada: 1, escudo: 1, pocao: 5, lixo: "item
-              inútil" }; // Removendo propriedade delete inventario.lixo;
-              console.log(inventario); // { espada: 1, escudo: 1, pocao: 5 }
+              // Inventário com item inútil const inventario = { espada: 1,
+              escudo: 1, pocao: 5, lixo: "item inútil", pedra: "sem valor" }; //
+              Removendo propriedades indesejadas delete inventario.lixo; delete
+              inventario.pedra; console.log(inventario); // { espada: 1, escudo:
+              1, pocao: 5 } // Verificando se foi removido
+              console.log(inventario.lixo); // undefined
+            </div>
+
+            <div class="tip-box">
+              <strong>⚠️ Cuidado:</strong> <code>delete</code> remove
+              permanentemente! Certifique-se de que realmente não precisa da
+              propriedade.
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🔄</span>
-              <span>Loop for...in</span>
+              <span>Percorrendo Propriedades (for...in)</span>
             </div>
+            <p>
+              <strong>Use <code>for...in</code> para percorrer</strong> todas as
+              propriedades de um objeto. Como verificar todos os itens da sua
+              mochila.
+            </p>
 
             <div class="code-block">
               const pokemon = { nome: "Pikachu", tipo: "Elétrico", nivel: 25,
-              hp: 100 }; // Percorrendo todas as propriedades for (let
-              propriedade in pokemon) { console.log(`${propriedade}:
-              ${pokemon[propriedade]}`); } // nome: Pikachu // tipo: Elétrico //
-              nivel: 25 // hp: 100
+              hp: 100, ataques: ["Thunderbolt", "Quick Attack"] }; //
+              Percorrendo todas as propriedades console.log("=== INFORMAÇÕES DO
+              POKÉMON ==="); for (let propriedade in pokemon) { const valor =
+              pokemon[propriedade]; console.log(`${propriedade}: ${valor}`); }
+              // Resultado: // nome: Pikachu // tipo: Elétrico // nivel: 25 //
+              hp: 100 // ataques: Thunderbolt,Quick Attack
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Uso prático:</strong> <code>for...in</code> é perfeito
+              para processar dados quando você não sabe quais propriedades
+              existem!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🔍</span>
-              <span>Verificando Propriedades</span>
+              <span>Verificando se Propriedade Existe</span>
             </div>
+            <p>
+              <strong
+                >Antes de usar uma propriedade, verifique se ela existe!</strong
+              >
+              Evita erros e comportamentos inesperados.
+            </p>
 
             <div class="code-block">
               const usuario = { nome: "João", email: "joao@email.com" }; //
-              Verificando se propriedade existe console.log("nome" in usuario);
-              // true console.log("telefone" in usuario); // false // Usando
-              hasOwnProperty console.log(usuario.hasOwnProperty("email")); //
-              true
+              Método 1: operador 'in' console.log("nome" in usuario); // true
+              console.log("telefone" in usuario); // false // Método 2:
+              hasOwnProperty (mais seguro)
+              console.log(usuario.hasOwnProperty("email")); // true
+              console.log(usuario.hasOwnProperty("endereco")); // false //
+              Método 3: verificação direta if (usuario.telefone) {
+              console.log("Telefone:", usuario.telefone); } else {
+              console.log("Telefone não cadastrado"); } // Usando com segurança
+              const telefone = usuario.telefone || "Não informado";
+              console.log("Telefone:", telefone);
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Boa prática:</strong> Sempre verifique se propriedades
+              opcionais existem antes de usá-las para evitar erros!
             </div>
           </div>
         </div>
@@ -808,64 +894,129 @@
           <div class="concept-card">
             <div class="concept-title">
               <span>🔑</span>
-              <span>Object.keys()</span>
+              <span>Object.keys() - Pegando as Chaves</span>
             </div>
+            <p>
+              <strong
+                >Object.keys() retorna um array com todas as chaves</strong
+              >
+              (nomes das propriedades) do objeto. Útil para saber quais
+              propriedades existem!
+            </p>
 
             <div class="code-block">
               const loja = { notebook: 2500, mouse: 50, teclado: 150, monitor:
-              800 }; // Obtendo todas as chaves const produtos =
-              Object.keys(loja); console.log(produtos); // ["notebook", "mouse",
-              "teclado", "monitor"] // Contando produtos console.log(`Temos
-              ${produtos.length} produtos`);
+              800 }; // Obtendo todas as chaves (nomes dos produtos) const
+              produtos = Object.keys(loja); console.log(produtos); //
+              ["notebook", "mouse", "teclado", "monitor"] // Exemplos práticos
+              console.log(`Temos ${produtos.length} produtos`); // 4 produtos //
+              Verificando se produto existe if (produtos.includes("mouse")) {
+              console.log("Temos mouse em estoque!"); } // Listando todos os
+              produtos produtos.forEach(produto => { console.log(`Produto:
+              ${produto}`); });
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Quando usar:</strong> Perfeito quando você precisa
+              saber quais propriedades um objeto tem, sem se importar com os
+              valores.
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>💎</span>
-              <span>Object.values()</span>
+              <span>Object.values() - Pegando os Valores</span>
             </div>
+            <p>
+              <strong
+                >Object.values() retorna um array com todos os valores</strong
+              >
+              das propriedades. Ideal para cálculos e análises!
+            </p>
 
             <div class="code-block">
               const notas = { matematica: 8.5, portugues: 9.0, historia: 7.5,
-              ciencias: 8.0 }; // Obtendo todos os valores const todasNotas =
-              Object.values(notas); console.log(todasNotas); // [8.5, 9.0, 7.5,
-              8.0] // Calculando média const media = todasNotas.reduce((a, b) =>
-              a + b) / todasNotas.length; console.log(`Média: ${media}`); //
-              Média: 8.25
+              ciencias: 8.0 }; // Obtendo todos os valores (as notas) const
+              todasNotas = Object.values(notas); console.log(todasNotas); //
+              [8.5, 9.0, 7.5, 8.0] // Calculando estatísticas const soma =
+              todasNotas.reduce((total, nota) => total + nota, 0); const media =
+              soma / todasNotas.length; const maiorNota =
+              Math.max(...todasNotas); const menorNota =
+              Math.min(...todasNotas); console.log(`Média:
+              ${media.toFixed(2)}`); // 8.25 console.log(`Maior nota:
+              ${maiorNota}`); // 9.0 console.log(`Menor nota: ${menorNota}`); //
+              7.5
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Casos de uso:</strong> Cálculos matemáticos,
+              estatísticas, somas, médias - quando só os valores importam!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🔗</span>
-              <span>Object.entries()</span>
+              <span>Object.entries() - Chaves E Valores</span>
             </div>
+            <p>
+              <strong>Object.entries() retorna pares [chave, valor]</strong> em
+              formato de array. Combina o melhor dos dois mundos!
+            </p>
 
             <div class="code-block">
               const ranking = { primeiro: "Ana", segundo: "Bruno", terceiro:
-              "Carlos" }; // Obtendo pares chave-valor const posicoes =
+              "Carlos" }; // Obtendo pares [chave, valor] const posicoes =
               Object.entries(ranking); console.log(posicoes); // [["primeiro",
               "Ana"], ["segundo", "Bruno"], ["terceiro", "Carlos"]] // Usando
-              com forEach posicoes.forEach(([posicao, nome]) => {
-              console.log(`${posicao}: ${nome}`); });
+              com forEach (destructuring nos parâmetros) console.log("🏆 RANKING
+              FINAL:"); posicoes.forEach(([posicao, nome]) => {
+              console.log(`${posicao}: ${nome}`); }); // Convertendo de volta
+              para objeto const novoRanking = Object.fromEntries(posicoes);
+              console.log(novoRanking); // Objeto original recriado // Filtrando
+              e transformando const top2 = posicoes .slice(0, 2) // Pega só os 2
+              primeiros .map(([pos, nome]) => `${nome} (${pos})`);
+              console.log(top2); // ["Ana (primeiro)", "Bruno (segundo)"]
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Super útil para:</strong> Transformar objetos, filtrar
+              dados, criar relatórios onde você precisa tanto da chave quanto do
+              valor!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🎯</span>
-              <span>Destructuring</span>
+              <span>Destructuring - Extraindo Dados</span>
             </div>
+            <p>
+              <strong>Destructuring permite extrair propriedades</strong> de
+              objetos de forma elegante. Como tirar itens específicos de uma
+              caixa organizada!
+            </p>
 
             <div class="code-block">
               const heroi = { nome: "Superman", poder: "Voo", cidade:
-              "Metrópolis", identidade: "Clark Kent" }; // Extraindo
-              propriedades const { nome, poder, cidade } = heroi;
+              "Metrópolis", identidade: "Clark Kent", idade: 35 }; // Extraindo
+              propriedades específicas const { nome, poder, cidade } = heroi;
               console.log(nome); // "Superman" console.log(poder); // "Voo"
-              console.log(cidade); // "Metrópolis" // Com renomeação const {
-              identidade: nomeReal } = heroi; console.log(nomeReal); // "Clark
-              Kent"
+              console.log(cidade); // "Metrópolis" // Renomeando durante a
+              extração const { identidade: nomeReal, idade: anos } = heroi;
+              console.log(nomeReal); // "Clark Kent" console.log(anos); // 35 //
+              Com valores padrão (caso não exista) const { fraqueza =
+              "Kriptonita", altura = "Não informado" } = heroi;
+              console.log(fraqueza); // "Kriptonita" (valor padrão) //
+              Destructuring em funções function apresentarHeroi({ nome, poder,
+              cidade }) { return `${nome} protege ${cidade} usando ${poder}!`; }
+              console.log(apresentarHeroi(heroi));
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Vantagens:</strong> Código mais limpo, menos repetição,
+              e você pega só o que precisa do objeto!
             </div>
           </div>
         </div>
@@ -893,67 +1044,142 @@
           <div class="concept-card">
             <div class="concept-title">
               <span>🏗️</span>
-              <span>Função Construtora</span>
+              <span>Função Construtora - Criando Moldes</span>
             </div>
+            <p>
+              <strong>Funções construtoras são como moldes</strong> para criar
+              múltiplos objetos similares. Como uma fábrica que produz carros
+              com o mesmo modelo!
+            </p>
 
             <div class="code-block">
-              // Função construtora (como um molde) function Carro(marca,
-              modelo, ano) { this.marca = marca; this.modelo = modelo; this.ano
-              = ano; this.acelerar = function() { return `${this.marca}
-              ${this.modelo} acelerando! 🚗💨`; }; } // Criando instâncias const
+              // Função construtora (sempre com letra maiúscula) function
+              Carro(marca, modelo, ano) { // 'this' se refere ao novo objeto
+              sendo criado this.marca = marca; this.modelo = modelo; this.ano =
+              ano; this.ligado = false; // Método dentro do construtor
+              this.acelerar = function() { if (this.ligado) { return
+              `${this.marca} ${this.modelo} acelerando! 🚗💨`; } else { return
+              `Ligue o carro primeiro! 🔑`; } }; this.ligar = function() {
+              this.ligado = true; return `${this.marca} ${this.modelo} ligado!
+              ✅`; }; } // Criando instâncias (objetos) usando 'new' const
               meuCarro = new Carro("Honda", "Civic", 2023); const outroCarro =
               new Carro("Toyota", "Corolla", 2022);
-              console.log(meuCarro.acelerar());
+              console.log(meuCarro.ligar()); // Honda Civic ligado!
+              console.log(meuCarro.acelerar()); // Honda Civic acelerando!
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Convenção:</strong> Funções construtoras sempre começam
+              com letra maiúscula. Use <code>new</code> para criar instâncias!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🧬</span>
-              <span>Prototype</span>
+              <span>Prototype - Compartilhando Métodos</span>
             </div>
+            <p>
+              <strong>Prototype permite adicionar métodos</strong> que todos os
+              objetos criados pela função construtora vão compartilhar.
+              Economiza memória!
+            </p>
 
             <div class="code-block">
-              // Adicionando método ao prototype Carro.prototype.frear =
-              function() { return `${this.marca} ${this.modelo} freando! 🛑`; };
-              // Todos os carros agora têm o método frear
-              console.log(meuCarro.frear()); console.log(outroCarro.frear()); //
-              Verificando prototype console.log(meuCarro.__proto__ ===
-              Carro.prototype); // true
+              // Adicionando métodos ao prototype (mais eficiente)
+              Carro.prototype.frear = function() { return `${this.marca}
+              ${this.modelo} freando! 🛑`; }; Carro.prototype.desligar =
+              function() { this.ligado = false; return `${this.marca}
+              ${this.modelo} desligado! ❌`; }; Carro.prototype.info =
+              function() { return `🚗 ${this.marca} ${this.modelo} (${this.ano})
+              - ${this.ligado ? 'Ligado' : 'Desligado'}`; }; // Todos os carros
+              agora têm esses métodos console.log(meuCarro.frear()); // Honda
+              Civic freando! console.log(outroCarro.info()); // Toyota Corolla
+              (2022) - Desligado // Verificando a cadeia de protótipos
+              console.log(meuCarro.__proto__ === Carro.prototype); // true //
+              Adicionando propriedades ao prototype Carro.prototype.combustivel
+              = "Gasolina"; console.log(meuCarro.combustivel); // "Gasolina"
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Vantagem do Prototype:</strong> Métodos no prototype
+              são compartilhados, economizando memória. Métodos no construtor
+              são copiados!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>👑</span>
-              <span>Classes (ES6)</span>
+              <span>Classes ES6 - Sintaxe Moderna</span>
             </div>
+            <p>
+              <strong>Classes são a forma moderna</strong> de criar objetos em
+              JavaScript. Mais limpa e familiar para quem vem de outras
+              linguagens!
+            </p>
 
             <div class="code-block">
-              class Animal { constructor(nome, tipo) { this.nome = nome;
-              this.tipo = tipo; } falar() { return `${this.nome} faz algum som!
-              🔊`; } } class Cachorro extends Animal { constructor(nome, raca) {
-              super(nome, "Cachorro"); this.raca = raca; } falar() { return
-              `${this.nome} faz: Au au! 🐕`; } } const rex = new Cachorro("Rex",
-              "Labrador"); console.log(rex.falar());
+              // Classe base class Animal { constructor(nome, tipo) { this.nome
+              = nome; this.tipo = tipo; this.energia = 100; } falar() { return
+              `${this.nome} faz algum som! 🔊`; } dormir() { this.energia = 100;
+              return `${this.nome} dormiu e recuperou energia! �`; } } // Classe
+              filha (herança) class Cachorro extends Animal { constructor(nome,
+              raca) { super(nome, "Cachorro"); // Chama o construtor da classe
+              pai this.raca = raca; this.felicidade = 100; } // Sobrescrevendo
+              método da classe pai falar() { return `${this.nome} faz: Au au!
+              🐕`; } // Método específico da classe filha brincar() {
+              this.energia -= 20; this.felicidade += 10; return `${this.nome}
+              está brincando! 🎾 (Energia: ${this.energia})`; } } const rex =
+              new Cachorro("Rex", "Labrador"); console.log(rex.falar()); // Rex
+              faz: Au au! console.log(rex.brincar()); // Rex está brincando!
+              console.log(rex.dormir()); // Rex dormiu e recuperou energia!
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Classes vs Funções Construtoras:</strong> Classes são
+              mais legíveis e organizadas, mas por baixo dos panos funcionam
+              igual!
             </div>
           </div>
 
           <div class="concept-card">
             <div class="concept-title">
               <span>🔒</span>
-              <span>Getters e Setters</span>
+              <span>Getters e Setters - Controle de Acesso</span>
             </div>
+            <p>
+              <strong
+                >Getters e Setters controlam como propriedades são
+                acessadas</strong
+              >
+              e modificadas. Como ter um porteiro para suas propriedades!
+            </p>
 
             <div class="code-block">
               class ContaBancaria { constructor(titular) { this.titular =
-              titular; this._saldo = 0; // propriedade "privada" } get saldo() {
-              return `R$ ${this._saldo.toFixed(2)}`; } set saldo(valor) { if
-              (valor >= 0) { this._saldo = valor; } else { console.log("Saldo
-              não pode ser negativo!"); } } depositar(valor) { this._saldo +=
-              valor; return `Depósito realizado! Saldo: ${this.saldo}`; } }
-              const conta = new ContaBancaria("Maria");
-              console.log(conta.depositar(100));
+              titular; this._saldo = 0; // _ indica propriedade "privada"
+              this._historico = []; } // Getter: controla como a propriedade é
+              lida get saldo() { return `R$ ${this._saldo.toFixed(2)}`; } //
+              Setter: controla como a propriedade é modificada set saldo(valor)
+              { if (typeof valor !== 'number') { console.log("❌ Saldo deve ser
+              um número!"); return; } if (valor < 0) { console.log("❌ Saldo não
+              pode ser negativo!"); return; } this._saldo = valor;
+              this._historico.push(`Saldo alterado para ${this.saldo}`); }
+              depositar(valor) { if (valor > 0) { this._saldo += valor;
+              this._historico.push(`Depósito: +R$ ${valor.toFixed(2)}`); return
+              `✅ Depósito realizado! Saldo atual: ${this.saldo}`; } return "❌
+              Valor deve ser positivo!"; } get historico() { return
+              this._historico.slice(); // Retorna cópia do array } } const conta
+              = new ContaBancaria("Maria"); console.log(conta.depositar(100));
+              // Depósito realizado! console.log(conta.saldo); // R$ 100.00
+              conta.saldo = -50; // Saldo não pode ser negativo!
+              console.log(conta.historico); // Array com histórico
+            </div>
+
+            <div class="tip-box">
+              <strong>💡 Benefícios:</strong> Validação automática, formatação
+              de dados, e controle total sobre como propriedades são usadas!
             </div>
           </div>
         </div>
@@ -1219,62 +1445,140 @@
             `;
       }
 
+      // ===== FUNÇÕES DO GERENCIADOR DE INVENTÁRIO =====
+
       function adicionarItem() {
-        const itens = ['arco', 'flecha', 'armadura', 'anel', 'pergaminho'];
+        // Lista de itens possíveis para adicionar
+        const itens = [
+          'arco',
+          'flecha',
+          'armadura',
+          'anel',
+          'pergaminho',
+          'poção',
+          'escudo',
+        ];
+
+        // Seleciona um item aleatório
         const item = itens[Math.floor(Math.random() * itens.length)];
+
+        // Adiciona o item ao inventário (ou incrementa se já existe)
         inventario[item] = (inventario[item] || 0) + 1;
 
-        document.getElementById('output-inventario').innerHTML = `
-> Item adicionado: ${item} ✨
+        // Atualiza a exibição com formatação melhorada
+        const output = document.getElementById('output-inventario');
+        output.innerHTML = `
+> ✨ ITEM ADICIONADO: ${item.toUpperCase()}
 >
-> Inventário atual:
-${Object.entries(inventario)
-  .map(([item, qtd]) => `> ${item}: ${qtd}`)
-  .join('\n')}
-            `;
+> 📦 INVENTÁRIO ATUAL:
+${formatarInventario()}
+>
+> 💡 Dica: Use Object.entries() para percorrer chave-valor!
+        `;
       }
 
       function removerItem() {
         const chaves = Object.keys(inventario);
+
+        // Verifica se o inventário está vazio
         if (chaves.length === 0) {
-          document.getElementById('output-inventario').innerHTML =
-            '> Inventário vazio! 📭';
+          document.getElementById('output-inventario').innerHTML = `
+> 📭 INVENTÁRIO VAZIO!
+>
+> 💡 Adicione alguns itens primeiro usando o botão "Adicionar Item"
+          `;
           return;
         }
 
+        // Seleciona um item aleatório para remover
         const item = chaves[Math.floor(Math.random() * chaves.length)];
+
+        // Remove uma unidade do item
         inventario[item]--;
+
+        // Se a quantidade chegou a zero, remove a propriedade completamente
         if (inventario[item] <= 0) {
           delete inventario[item];
         }
 
-        document.getElementById('output-inventario').innerHTML = `
-> Item removido: ${item} 🗑️
+        // Atualiza a exibição
+        const output = document.getElementById('output-inventario');
+        output.innerHTML = `
+> 🗑️ ITEM REMOVIDO: ${item.toUpperCase()}
 >
-> Inventário atual:
-${Object.entries(inventario)
-  .map(([item, qtd]) => `> ${item}: ${qtd}`)
-  .join('\n')}
-            `;
+> 📦 INVENTÁRIO ATUAL:
+${formatarInventario()}
+>
+> 💡 Dica: Use 'delete' para remover propriedades completamente!
+        `;
       }
 
       function listarItens() {
         const output = document.getElementById('output-inventario');
+
+        // Verifica se há itens no inventário
         if (Object.keys(inventario).length === 0) {
-          output.innerHTML = '> Inventário vazio! 📭';
+          output.innerHTML = `
+> 📭 INVENTÁRIO VAZIO!
+>
+> 💡 Adicione alguns itens para ver a listagem completa
+          `;
           return;
         }
 
+        // Calcula estatísticas do inventário
+        const totalTipos = Object.keys(inventario).length;
+        const totalItens = Object.values(inventario).reduce(
+          (total, qtd) => total + qtd,
+          0
+        );
+        const itemMaisComum = Object.entries(inventario).reduce(
+          (maior, atual) => (atual[1] > maior[1] ? atual : maior)
+        );
+
+        // Exibe listagem completa com estatísticas
         output.innerHTML = `
-> 📋 INVENTÁRIO COMPLETO:
+> 📋 RELATÓRIO COMPLETO DO INVENTÁRIO
 >
-> Itens (${Object.keys(inventario).length}):
-${Object.entries(inventario)
-  .map(([item, qtd]) => `> • ${item}: ${qtd}x`)
-  .join('\n')}
+> 📊 ESTATÍSTICAS:
+> • Tipos diferentes: ${totalTipos}
+> • Total de itens: ${totalItens}
+> • Item mais comum: ${itemMaisComum[0]} (${itemMaisComum[1]}x)
 >
-> Total de itens: ${Object.values(inventario).reduce((a, b) => a + b, 0)}
-            `;
+> 📦 ITENS DETALHADOS:
+${formatarInventarioDetalhado()}
+>
+> 💡 Dica: Object.keys(), Object.values() e Object.entries() em ação!
+        `;
+      }
+
+      // ===== FUNÇÕES AUXILIARES =====
+
+      function formatarInventario() {
+        if (Object.keys(inventario).length === 0) {
+          return '> (vazio)';
+        }
+
+        return Object.entries(inventario)
+          .map(([item, qtd]) => `> • ${item}: ${qtd}x`)
+          .join('\n');
+      }
+
+      function formatarInventarioDetalhado() {
+        return Object.entries(inventario)
+          .sort(([, a], [, b]) => b - a) // Ordena por quantidade (maior primeiro)
+          .map(([item, qtd], index) => {
+            const emoji =
+              index === 0
+                ? '🥇'
+                : index === 1
+                ? '🥈'
+                : index === 2
+                ? '🥉'
+                : '📦';
+            return `> ${emoji} ${item}: ${qtd}x`;
+          })
+          .join('\n');
       }
 
       function analisarVendas() {
