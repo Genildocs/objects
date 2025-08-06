@@ -1,1003 +1,1072 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Objects Cheatsheet 🤖</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <!-- SEO Meta Tags -->
+    <title>
+      JavaScript Objects Cheatsheet - Aprenda Objetos JS Interativamente |
+      blueprintblog.tech
+    </title>
+    <meta
+      name="description"
+      content="Cheatsheet interativo e educativo sobre objetos JavaScript. Aprenda conceitos básicos, intermediários e avançados com demos práticas. Ideal para desenvolvedores iniciantes e experientes." />
+    <meta
+      name="keywords"
+      content="javascript, objetos, cheatsheet, programação, desenvolvimento web, js, tutorial, aprendizado, blueprintblog" />
+    <meta name="author" content="blueprintblog.tech" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Portuguese" />
 
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: radial-gradient(ellipse at center, #1a0033 0%, #0d001a 50%, #000000 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://object.blueprintblog.tech" />
 
-    /* Floating background emojis */
-    .floating-emoji {
-      position: fixed;
-      font-size: 2rem;
-      opacity: 0.3;
-      animation: float 6s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 1;
-      text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
-      filter: drop-shadow(0 0 10px #00ffff);
-    }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://object.blueprintblog.tech" />
+    <meta
+      property="og:title"
+      content="JavaScript Objects Cheatsheet - Aprenda Objetos JS Interativamente" />
+    <meta
+      property="og:description"
+      content="Cheatsheet interativo e educativo sobre objetos JavaScript. Aprenda conceitos básicos, intermediários e avançados com demos práticas." />
+    <meta
+      property="og:image"
+      content="https://object.blueprintblog.tech/og-image.png" />
+    <meta property="og:site_name" content="blueprintblog.tech" />
+    <meta property="og:locale" content="pt_BR" />
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px) rotate(0deg);
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://object.blueprintblog.tech" />
+    <meta
+      property="twitter:title"
+      content="JavaScript Objects Cheatsheet - Aprenda Objetos JS Interativamente" />
+    <meta
+      property="twitter:description"
+      content="Cheatsheet interativo e educativo sobre objetos JavaScript. Aprenda conceitos básicos, intermediários e avançados com demos práticas." />
+    <meta
+      property="twitter:image"
+      content="https://object.blueprintblog.tech/og-image.png" />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1a0033" />
+    <meta name="msapplication-TileColor" content="#1a0033" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="JS Objects Cheatsheet" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JavaScript Objects Cheatsheet",
+        "description": "Cheatsheet interativo e educativo sobre objetos JavaScript. Aprenda conceitos básicos, intermediários e avançados com demos práticas.",
+        "url": "https://object.blueprintblog.tech",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        },
+        "author": {
+          "@type": "Organization",
+          "name": "blueprintblog.tech",
+          "url": "https://blueprintblog.tech"
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "blueprintblog.tech",
+          "url": "https://blueprintblog.tech"
+        },
+        "keywords": "javascript, objetos, cheatsheet, programação, desenvolvimento web, js, tutorial, aprendizado",
+        "inLanguage": "pt-BR",
+        "isAccessibleForFree": true,
+        "educationalLevel": "Beginner to Advanced",
+        "learningResourceType": "Interactive Tutorial"
+      }
+    </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap');
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Nunito', sans-serif;
+        background: radial-gradient(
+          ellipse at center,
+          #1a0033 0%,
+          #0d001a 50%,
+          #000000 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Floating background emojis */
+      .floating-emoji {
+        position: fixed;
+        font-size: 2rem;
+        opacity: 0.3;
+        animation: float 6s ease-in-out infinite;
+        pointer-events: none;
+        z-index: 1;
         text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+        filter: drop-shadow(0 0 10px #00ffff);
       }
-      50% {
-        transform: translateY(-20px) rotate(180deg);
-        text-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff;
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff;
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+          text-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff;
+        }
       }
-    }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .header {
-      text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #ff00ff;
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), inset 0 0 30px rgba(0, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #00ffff;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #00ffff;
-      animation: neonPulse 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes neonPulse {
-      from { text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #00ffff; }
-      to { text-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff, 0 0 90px #00ffff; }
-    }
-
-    .progress-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      margin: 2rem 0;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid #00ff00;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-    }
-
-    .progress-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      color: #00ff00;
-      font-weight: 600;
-      border: 1px solid transparent;
-    }
-
-    .progress-step:hover {
-      border: 1px solid #00ffff;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-    }
-
-    .progress-step.active {
-      background: linear-gradient(45deg, #ff00ff, #00ffff);
-      color: #000000;
-      font-weight: 700;
-      transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
-      border: 1px solid #ffffff;
-    }
-
-    .level-section {
-      background: rgba(0, 0, 0, 0.85);
-      border: 2px solid #00ff00;
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 40px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(255, 0, 255, 0.1);
-      backdrop-filter: blur(5px);
-      display: none;
-    }
-
-    .level-section.active {
-      display: block;
-      animation: slideIn 0.5s ease-out;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-        box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        z-index: 2;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        box-shadow: 0 0 40px rgba(0, 255, 0, 0.3), inset 0 0 20px rgba(255, 0, 255, 0.1);
-      }
-    }
 
-    .level-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 3px solid #ff00ff;
-      box-shadow: 0 3px 10px rgba(255, 0, 255, 0.5);
-    }
-
-    .level-header h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #00ffff;
-      text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
-    }
-
-    .concept-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .concept-card {
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 0, 51, 0.8));
-      border-radius: 15px;
-      padding: 1.5rem;
-      border: 2px solid #00ffff;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .concept-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-      transition: left 0.5s;
-    }
-
-    .concept-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(255, 0, 255, 0.3);
-      border-color: #ff00ff;
-    }
-
-    .concept-card:hover::before {
-      left: 100%;
-    }
-
-    .concept-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #00ff00;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 10px #00ff00;
-    }
-
-    .code-block {
-      background: #000000;
-      color: #00ff00;
-      padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid #00ffff;
-      font-family: 'Courier New', monospace;
-      margin: 1rem 0;
-      position: relative;
-      overflow-x: auto;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 20px rgba(0, 255, 0, 0.1);
-    }
-
-    .code-block::before {
-      content: '💻';
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 1.2rem;
-      filter: drop-shadow(0 0 5px #00ffff);
-    }
-
-    .tip-box {
-      background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(0, 255, 255, 0.1));
-      border-radius: 10px;
-      padding: 1rem;
-      margin: 1rem 0;
-      border: 1px solid #ff00ff;
-      color: #ffffff;
-      font-weight: 400;
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
-    }
-
-    .tip-box::before {
-      content: '💡 ';
-      font-size: 1.2rem;
-      filter: drop-shadow(0 0 5px #ffff00);
-    }
-
-    .concept-card p {
-      color: #ffffff;
-      font-weight: 300;
-      line-height: 1.6;
-    }
-
-    .interactive-demo {
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin: 1rem 0;
-      border: 2px dashed #00ff00;
-      box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-    }
-
-    .interactive-demo h3 {
-      color: #ff00ff;
-      font-weight: 700;
-      text-shadow: 0 0 10px #ff00ff;
-      margin-bottom: 1rem;
-    }
-
-    .interactive-demo p {
-      color: #ffffff;
-      font-weight: 300;
-    }
-
-    .demo-button {
-      background: linear-gradient(135deg, #ff00ff, #00ffff);
-      color: #000000;
-      border: 2px solid #ffffff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      font-family: 'Nunito', sans-serif;
-      transition: all 0.3s ease;
-      margin: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .demo-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8), 0 0 50px rgba(0, 255, 255, 0.4);
-      background: linear-gradient(135deg, #00ffff, #ff00ff);
-    }
-
-    .demo-output {
-      background: #000000;
-      color: #00ff00;
-      padding: 1rem;
-      border-radius: 10px;
-      border: 1px solid #00ffff;
-      font-family: 'Courier New', monospace;
-      margin-top: 1rem;
-      min-height: 50px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), inset 0 0 15px rgba(0, 255, 0, 0.1);
-    }
-
-    .achievement {
-      text-align: center;
-      background: linear-gradient(135deg, rgba(255, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
-      border: 3px solid #ffff00;
-      border-radius: 20px;
-      padding: 2rem;
-      margin: 2rem 0;
-      box-shadow: 0 0 50px rgba(255, 255, 0, 0.8), 0 0 100px rgba(255, 0, 255, 0.4);
-      display: none;
-      backdrop-filter: blur(10px);
-    }
-
-    .achievement.show {
-      display: block;
-      animation: celebration 1s ease-out;
-    }
-
-    @keyframes celebration {
-      0% {
-        transform: scale(0.8);
-        opacity: 0;
-        box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
-      }
-      50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 80px rgba(255, 255, 0, 1), 0 0 120px rgba(255, 0, 255, 0.6);
-      }
-      100% {
-        transform: scale(1);
-        opacity: 1;
-        box-shadow: 0 0 50px rgba(255, 255, 0, 0.8), 0 0 100px rgba(255, 0, 255, 0.4);
-      }
-    }
-
-    .achievement h2 {
-      color: #ffff00 !important;
-      font-weight: 800;
-      text-shadow: 0 0 20px #ffff00, 0 0 40px #ff00ff;
-    }
-
-    .achievement h3 {
-      color: #00ffff !important;
-      font-weight: 700;
-      text-shadow: 0 0 15px #00ffff;
-    }
-
-    .achievement p {
-      color: #ffffff !important;
-      font-weight: 400;
-    }
-
-    .celebration-emojis {
-      font-size: 3rem;
-      animation: bounce 2s infinite;
-      filter: drop-shadow(0 0 10px #ffff00);
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-        filter: drop-shadow(0 0 10px #ffff00);
-      }
-      40% {
-        transform: translateY(-10px);
-        filter: drop-shadow(0 0 20px #ff00ff);
-      }
-      60% {
-        transform: translateY(-5px);
-        filter: drop-shadow(0 0 15px #00ffff);
-      }
-    }
-
-    .navigation {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 2rem;
-    }
-
-    .nav-button {
-      background: linear-gradient(135deg, #ff00ff, #00ffff);
-      color: #000000;
-      border: 2px solid #ffffff;
-      padding: 1rem 2rem;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 700;
-      font-family: 'Nunito', sans-serif;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .nav-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4);
-      background: linear-gradient(135deg, #00ffff, #ff00ff);
-    }
-
-    .nav-button:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-      transform: none;
-      background: linear-gradient(135deg, #333333, #666666);
-      color: #999999;
-      border-color: #555555;
-      box-shadow: none;
-    }
-
-    @media (max-width: 768px) {
-      .concept-grid {
-        grid-template-columns: 1fr;
+      .header {
+        text-align: center;
+        background: rgba(0, 0, 0, 0.8);
+        border: 2px solid #ff00ff;
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.5),
+          inset 0 0 30px rgba(0, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
       }
 
       .header h1 {
-        font-size: 2rem;
+        font-size: 3rem;
+        font-weight: 800;
+        color: #00ffff;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #00ffff;
+        animation: neonPulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes neonPulse {
+        from {
+          text-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #00ffff;
+        }
+        to {
+          text-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff, 0 0 90px #00ffff;
+        }
       }
 
       .progress-bar {
-        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid #00ff00;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
       }
-    }
-  </style>
-</head>
-<body>
-<!-- Floating background emojis -->
-<div class="floating-emoji" style="top: 10%; left: 10%; animation-delay: 0s;">💻</div>
-<div class="floating-emoji" style="top: 20%; right: 15%; animation-delay: 1s;">📦</div>
-<div class="floating-emoji" style="top: 60%; left: 5%; animation-delay: 2s;">🧠</div>
-<div class="floating-emoji" style="top: 80%; right: 10%; animation-delay: 3s;">🔧</div>
-<div class="floating-emoji" style="top: 40%; left: 80%; animation-delay: 4s;">💾</div>
-<div class="floating-emoji" style="top: 70%; left: 70%; animation-delay: 5s;">⚙️</div>
 
-<div class="container">
-  <div class="header">
-    <h1>🤖 JavaScript Objects Cheatsheet</h1>
-    <p style="font-size: 1.2rem; color: #ff00ff; font-weight: 400; text-shadow: 0 0 10px #ff00ff;">Aprenda objetos de forma divertida e interativa!</p>
-  </div>
+      .progress-step {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        color: #00ff00;
+        font-weight: 600;
+        border: 1px solid transparent;
+      }
 
-  <div class="progress-bar">
-    <div class="progress-step active" data-level="0">
-      <span>🧠</span>
-      <span>Conceitos Básicos</span>
-    </div>
-    <div class="progress-step" data-level="1">
-      <span>🤖</span>
-      <span>Iniciante</span>
-    </div>
-    <div class="progress-step" data-level="2">
-      <span>🤖⚙️</span>
-      <span>Intermediário</span>
-    </div>
-    <div class="progress-step" data-level="3">
-      <span>🤖🚀</span>
-      <span>Avançado</span>
-    </div>
-  </div>
+      .progress-step:hover {
+        border: 1px solid #00ffff;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+      }
 
-  <!-- Level 0: Conceitos Básicos -->
-  <div class="level-section active" data-level="0">
-    <div class="level-header">
-      <span style="font-size: 3rem;">🧠</span>
-      <h2>Conceitos Básicos</h2>
+      .progress-step.active {
+        background: linear-gradient(45deg, #ff00ff, #00ffff);
+        color: #000000;
+        font-weight: 700;
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+        border: 1px solid #ffffff;
+      }
+
+      .level-section {
+        background: rgba(0, 0, 0, 0.85);
+        border: 2px solid #00ff00;
+        border-radius: 20px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 0 40px rgba(0, 255, 0, 0.3),
+          inset 0 0 20px rgba(255, 0, 255, 0.1);
+        backdrop-filter: blur(5px);
+        display: none;
+      }
+
+      .level-section.active {
+        display: block;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+          box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          box-shadow: 0 0 40px rgba(0, 255, 0, 0.3),
+            inset 0 0 20px rgba(255, 0, 255, 0.1);
+        }
+      }
+
+      .level-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #ff00ff;
+        box-shadow: 0 3px 10px rgba(255, 0, 255, 0.5);
+      }
+
+      .level-header h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #00ffff;
+        text-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff;
+      }
+
+      .concept-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .concept-card {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.9),
+          rgba(26, 0, 51, 0.8)
+        );
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 2px solid #00ffff;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .concept-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .concept-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.6),
+          0 0 60px rgba(255, 0, 255, 0.3);
+        border-color: #ff00ff;
+      }
+
+      .concept-card:hover::before {
+        left: 100%;
+      }
+
+      .concept-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #00ff00;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 10px #00ff00;
+      }
+
+      .code-block {
+        background: #000000;
+        color: #00ff00;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid #00ffff;
+        font-family: 'Courier New', monospace;
+        margin: 1rem 0;
+        position: relative;
+        overflow-x: auto;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3),
+          inset 0 0 20px rgba(0, 255, 0, 0.1);
+      }
+
+      .code-block::before {
+        content: '💻';
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.2rem;
+        filter: drop-shadow(0 0 5px #00ffff);
+      }
+
+      .tip-box {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 0, 255, 0.2),
+          rgba(0, 255, 255, 0.1)
+        );
+        border-radius: 10px;
+        padding: 1rem;
+        margin: 1rem 0;
+        border: 1px solid #ff00ff;
+        color: #ffffff;
+        font-weight: 400;
+        box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+      }
+
+      .tip-box::before {
+        content: '💡 ';
+        font-size: 1.2rem;
+        filter: drop-shadow(0 0 5px #ffff00);
+      }
+
+      .concept-card p {
+        color: #ffffff;
+        font-weight: 300;
+        line-height: 1.6;
+      }
+
+      .interactive-demo {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border: 2px dashed #00ff00;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+      }
+
+      .interactive-demo h3 {
+        color: #ff00ff;
+        font-weight: 700;
+        text-shadow: 0 0 10px #ff00ff;
+        margin-bottom: 1rem;
+      }
+
+      .interactive-demo p {
+        color: #ffffff;
+        font-weight: 300;
+      }
+
+      .demo-button {
+        background: linear-gradient(135deg, #ff00ff, #00ffff);
+        color: #000000;
+        border: 2px solid #ffffff;
+        padding: 0.8rem 1.5rem;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: 'Nunito', sans-serif;
+        transition: all 0.3s ease;
+        margin: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .demo-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px rgba(255, 0, 255, 0.8),
+          0 0 50px rgba(0, 255, 255, 0.4);
+        background: linear-gradient(135deg, #00ffff, #ff00ff);
+      }
+
+      .demo-output {
+        background: #000000;
+        color: #00ff00;
+        padding: 1rem;
+        border-radius: 10px;
+        border: 1px solid #00ffff;
+        font-family: 'Courier New', monospace;
+        margin-top: 1rem;
+        min-height: 50px;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3),
+          inset 0 0 15px rgba(0, 255, 0, 0.1);
+      }
+
+      .achievement {
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 0, 255, 0.3),
+          rgba(0, 255, 255, 0.3)
+        );
+        border: 3px solid #ffff00;
+        border-radius: 20px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 0 50px rgba(255, 255, 0, 0.8),
+          0 0 100px rgba(255, 0, 255, 0.4);
+        display: none;
+        backdrop-filter: blur(10px);
+      }
+
+      .achievement.show {
+        display: block;
+        animation: celebration 1s ease-out;
+      }
+
+      @keyframes celebration {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+          box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0 0 80px rgba(255, 255, 0, 1),
+            0 0 120px rgba(255, 0, 255, 0.6);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+          box-shadow: 0 0 50px rgba(255, 255, 0, 0.8),
+            0 0 100px rgba(255, 0, 255, 0.4);
+        }
+      }
+
+      .achievement h2 {
+        color: #ffff00 !important;
+        font-weight: 800;
+        text-shadow: 0 0 20px #ffff00, 0 0 40px #ff00ff;
+      }
+
+      .achievement h3 {
+        color: #00ffff !important;
+        font-weight: 700;
+        text-shadow: 0 0 15px #00ffff;
+      }
+
+      .achievement p {
+        color: #ffffff !important;
+        font-weight: 400;
+      }
+
+      .celebration-emojis {
+        font-size: 3rem;
+        animation: bounce 2s infinite;
+        filter: drop-shadow(0 0 10px #ffff00);
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+          filter: drop-shadow(0 0 10px #ffff00);
+        }
+        40% {
+          transform: translateY(-10px);
+          filter: drop-shadow(0 0 20px #ff00ff);
+        }
+        60% {
+          transform: translateY(-5px);
+          filter: drop-shadow(0 0 15px #00ffff);
+        }
+      }
+
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+
+      .nav-button {
+        background: linear-gradient(135deg, #ff00ff, #00ffff);
+        color: #000000;
+        border: 2px solid #ffffff;
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 700;
+        font-family: 'Nunito', sans-serif;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .nav-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(255, 0, 255, 0.8),
+          0 0 60px rgba(0, 255, 255, 0.4);
+        background: linear-gradient(135deg, #00ffff, #ff00ff);
+      }
+
+      .nav-button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none;
+        background: linear-gradient(135deg, #333333, #666666);
+        color: #999999;
+        border-color: #555555;
+        box-shadow: none;
+      }
+
+      @media (max-width: 768px) {
+        .concept-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+
+        .progress-bar {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating background emojis -->
+    <div
+      class="floating-emoji"
+      style="top: 10%; left: 10%; animation-delay: 0s">
+      💻
+    </div>
+    <div
+      class="floating-emoji"
+      style="top: 20%; right: 15%; animation-delay: 1s">
+      📦
+    </div>
+    <div class="floating-emoji" style="top: 60%; left: 5%; animation-delay: 2s">
+      🧠
+    </div>
+    <div
+      class="floating-emoji"
+      style="top: 80%; right: 10%; animation-delay: 3s">
+      🔧
+    </div>
+    <div
+      class="floating-emoji"
+      style="top: 40%; left: 80%; animation-delay: 4s">
+      💾
+    </div>
+    <div
+      class="floating-emoji"
+      style="top: 70%; left: 70%; animation-delay: 5s">
+      ⚙️
     </div>
 
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>📦</span>
-          <span>O que são Objetos?</span>
+    <div class="container">
+      <div class="header">
+        <h1>🤖 JavaScript Objects Cheatsheet</h1>
+        <p
+          style="
+            font-size: 1.2rem;
+            color: #ff00ff;
+            font-weight: 400;
+            text-shadow: 0 0 10px #ff00ff;
+          ">
+          Aprenda objetos de forma divertida e interativa!
+        </p>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-step active" data-level="0">
+          <span>🧠</span>
+          <span>Conceitos Básicos</span>
         </div>
-        <p>Objetos são estruturas que armazenam dados relacionados em pares chave-valor. Como uma caixa organizada com etiquetas!</p>
-
-        <div class="code-block">
-          // Um objeto é como uma caixa com compartimentos
-          const pessoa = {
-          nome: "Ana",     // 🧱 propriedade
-          idade: 25,       // 🧱 propriedade
-          falar: function() { // 🧰 método
-          return "Olá!";
-          }
-          };
+        <div class="progress-step" data-level="1">
+          <span>🤖</span>
+          <span>Iniciante</span>
         </div>
-
-        <div class="tip-box">
-          <strong>Dica:</strong> Pense em objetos como fichas de personagens de RPG - cada um tem suas características únicas!
+        <div class="progress-step" data-level="2">
+          <span>🤖⚙️</span>
+          <span>Intermediário</span>
+        </div>
+        <div class="progress-step" data-level="3">
+          <span>🤖🚀</span>
+          <span>Avançado</span>
         </div>
       </div>
 
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🧱</span>
-          <span>Propriedades</span>
+      <!-- Level 0: Conceitos Básicos -->
+      <div class="level-section active" data-level="0">
+        <div class="level-header">
+          <span style="font-size: 3rem">🧠</span>
+          <h2>Conceitos Básicos</h2>
         </div>
-        <p>Propriedades são as características do objeto. Como os atributos de um personagem!</p>
 
-        <div class="code-block">
-          const carro = {
-          marca: "Toyota",    // 🧱 propriedade
-          cor: "azul",        // 🧱 propriedade
-          ano: 2023          // 🧱 propriedade
-          };
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>📦</span>
+              <span>O que são Objetos?</span>
+            </div>
+            <p>
+              Objetos são estruturas que armazenam dados relacionados em pares
+              chave-valor. Como uma caixa organizada com etiquetas!
+            </p>
 
-          // Acessando propriedades
-          console.log(carro.marca); // "Toyota"
-          console.log(carro["cor"]); // "azul"
+            <div class="code-block">
+              // Um objeto é como uma caixa com compartimentos const pessoa = {
+              nome: "Ana", // 🧱 propriedade idade: 25, // 🧱 propriedade falar:
+              function() { // 🧰 método return "Olá!"; } };
+            </div>
+
+            <div class="tip-box">
+              <strong>Dica:</strong> Pense em objetos como fichas de personagens
+              de RPG - cada um tem suas características únicas!
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🧱</span>
+              <span>Propriedades</span>
+            </div>
+            <p>
+              Propriedades são as características do objeto. Como os atributos
+              de um personagem!
+            </p>
+
+            <div class="code-block">
+              const carro = { marca: "Toyota", // 🧱 propriedade cor: "azul", //
+              🧱 propriedade ano: 2023 // 🧱 propriedade }; // Acessando
+              propriedades console.log(carro.marca); // "Toyota"
+              console.log(carro["cor"]); // "azul"
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🧰</span>
+              <span>Métodos</span>
+            </div>
+            <p>
+              Métodos são funções dentro de objetos. São as "habilidades" que o
+              objeto pode executar!
+            </p>
+
+            <div class="code-block">
+              const calculadora = { somar: function(a, b) { // 🧰 método return
+              a + b; }, multiplicar(a, b) { // 🧰 método (sintaxe moderna)
+              return a * b; } }; console.log(calculadora.somar(2, 3)); // 5
+            </div>
+          </div>
+        </div>
+
+        <div class="interactive-demo">
+          <h3>🎮 Demo Interativa: Criando seu Primeiro Objeto</h3>
+          <p>Clique no botão para ver um objeto sendo criado em tempo real!</p>
+          <button class="demo-button" onclick="criarObjetoBasico()">
+            Criar Objeto Pessoa 👤
+          </button>
+          <div class="demo-output" id="output-basico"></div>
         </div>
       </div>
 
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🧰</span>
-          <span>Métodos</span>
+      <!-- Level 1: Iniciante -->
+      <div class="level-section" data-level="1">
+        <div class="level-header">
+          <span style="font-size: 3rem">🤖</span>
+          <h2>Nível Iniciante</h2>
         </div>
-        <p>Métodos são funções dentro de objetos. São as "habilidades" que o objeto pode executar!</p>
 
-        <div class="code-block">
-          const calculadora = {
-          somar: function(a, b) {  // 🧰 método
-          return a + b;
-          },
-          multiplicar(a, b) {      // 🧰 método (sintaxe moderna)
-          return a * b;
-          }
-          };
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>➕</span>
+              <span>Adicionando Propriedades</span>
+            </div>
 
-          console.log(calculadora.somar(2, 3)); // 5
+            <div class="code-block">
+              const jogador = { nome: "Mario" }; // Adicionando novas
+              propriedades jogador.pontos = 100; jogador["vidas"] = 3;
+              jogador.poder = "Super"; console.log(jogador); // { nome: "Mario",
+              pontos: 100, vidas: 3, poder: "Super" }
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🗑️</span>
+              <span>Removendo Propriedades</span>
+            </div>
+
+            <div class="code-block">
+              const inventario = { espada: 1, escudo: 1, pocao: 5, lixo: "item
+              inútil" }; // Removendo propriedade delete inventario.lixo;
+              console.log(inventario); // { espada: 1, escudo: 1, pocao: 5 }
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🔄</span>
+              <span>Loop for...in</span>
+            </div>
+
+            <div class="code-block">
+              const pokemon = { nome: "Pikachu", tipo: "Elétrico", nivel: 25,
+              hp: 100 }; // Percorrendo todas as propriedades for (let
+              propriedade in pokemon) { console.log(`${propriedade}:
+              ${pokemon[propriedade]}`); } // nome: Pikachu // tipo: Elétrico //
+              nivel: 25 // hp: 100
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🔍</span>
+              <span>Verificando Propriedades</span>
+            </div>
+
+            <div class="code-block">
+              const usuario = { nome: "João", email: "joao@email.com" }; //
+              Verificando se propriedade existe console.log("nome" in usuario);
+              // true console.log("telefone" in usuario); // false // Usando
+              hasOwnProperty console.log(usuario.hasOwnProperty("email")); //
+              true
+            </div>
+          </div>
         </div>
+
+        <div class="interactive-demo">
+          <h3>🎮 Demo: Gerenciador de Inventário</h3>
+          <button class="demo-button" onclick="adicionarItem()">
+            Adicionar Item 📦
+          </button>
+          <button class="demo-button" onclick="removerItem()">
+            Remover Item 🗑️
+          </button>
+          <button class="demo-button" onclick="listarItens()">
+            Listar Itens 📋
+          </button>
+          <div class="demo-output" id="output-inventario"></div>
+        </div>
+      </div>
+
+      <!-- Level 2: Intermediário -->
+      <div class="level-section" data-level="2">
+        <div class="level-header">
+          <span style="font-size: 3rem">🤖⚙️</span>
+          <h2>Nível Intermediário</h2>
+        </div>
+
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🔑</span>
+              <span>Object.keys()</span>
+            </div>
+
+            <div class="code-block">
+              const loja = { notebook: 2500, mouse: 50, teclado: 150, monitor:
+              800 }; // Obtendo todas as chaves const produtos =
+              Object.keys(loja); console.log(produtos); // ["notebook", "mouse",
+              "teclado", "monitor"] // Contando produtos console.log(`Temos
+              ${produtos.length} produtos`);
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>💎</span>
+              <span>Object.values()</span>
+            </div>
+
+            <div class="code-block">
+              const notas = { matematica: 8.5, portugues: 9.0, historia: 7.5,
+              ciencias: 8.0 }; // Obtendo todos os valores const todasNotas =
+              Object.values(notas); console.log(todasNotas); // [8.5, 9.0, 7.5,
+              8.0] // Calculando média const media = todasNotas.reduce((a, b) =>
+              a + b) / todasNotas.length; console.log(`Média: ${media}`); //
+              Média: 8.25
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🔗</span>
+              <span>Object.entries()</span>
+            </div>
+
+            <div class="code-block">
+              const ranking = { primeiro: "Ana", segundo: "Bruno", terceiro:
+              "Carlos" }; // Obtendo pares chave-valor const posicoes =
+              Object.entries(ranking); console.log(posicoes); // [["primeiro",
+              "Ana"], ["segundo", "Bruno"], ["terceiro", "Carlos"]] // Usando
+              com forEach posicoes.forEach(([posicao, nome]) => {
+              console.log(`${posicao}: ${nome}`); });
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🎯</span>
+              <span>Destructuring</span>
+            </div>
+
+            <div class="code-block">
+              const heroi = { nome: "Superman", poder: "Voo", cidade:
+              "Metrópolis", identidade: "Clark Kent" }; // Extraindo
+              propriedades const { nome, poder, cidade } = heroi;
+              console.log(nome); // "Superman" console.log(poder); // "Voo"
+              console.log(cidade); // "Metrópolis" // Com renomeação const {
+              identidade: nomeReal } = heroi; console.log(nomeReal); // "Clark
+              Kent"
+            </div>
+          </div>
+        </div>
+
+        <div class="interactive-demo">
+          <h3>🎮 Demo: Analisador de Dados</h3>
+          <button class="demo-button" onclick="analisarVendas()">
+            Analisar Vendas 📊
+          </button>
+          <button class="demo-button" onclick="extrairDados()">
+            Extrair Dados 🎯
+          </button>
+          <div class="demo-output" id="output-analise"></div>
+        </div>
+      </div>
+
+      <!-- Level 3: Avançado -->
+      <div class="level-section" data-level="3">
+        <div class="level-header">
+          <span style="font-size: 3rem">🤖🚀</span>
+          <h2>Nível Avançado</h2>
+        </div>
+
+        <div class="concept-grid">
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🏗️</span>
+              <span>Função Construtora</span>
+            </div>
+
+            <div class="code-block">
+              // Função construtora (como um molde) function Carro(marca,
+              modelo, ano) { this.marca = marca; this.modelo = modelo; this.ano
+              = ano; this.acelerar = function() { return `${this.marca}
+              ${this.modelo} acelerando! 🚗💨`; }; } // Criando instâncias const
+              meuCarro = new Carro("Honda", "Civic", 2023); const outroCarro =
+              new Carro("Toyota", "Corolla", 2022);
+              console.log(meuCarro.acelerar());
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🧬</span>
+              <span>Prototype</span>
+            </div>
+
+            <div class="code-block">
+              // Adicionando método ao prototype Carro.prototype.frear =
+              function() { return `${this.marca} ${this.modelo} freando! 🛑`; };
+              // Todos os carros agora têm o método frear
+              console.log(meuCarro.frear()); console.log(outroCarro.frear()); //
+              Verificando prototype console.log(meuCarro.__proto__ ===
+              Carro.prototype); // true
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>👑</span>
+              <span>Classes (ES6)</span>
+            </div>
+
+            <div class="code-block">
+              class Animal { constructor(nome, tipo) { this.nome = nome;
+              this.tipo = tipo; } falar() { return `${this.nome} faz algum som!
+              🔊`; } } class Cachorro extends Animal { constructor(nome, raca) {
+              super(nome, "Cachorro"); this.raca = raca; } falar() { return
+              `${this.nome} faz: Au au! 🐕`; } } const rex = new Cachorro("Rex",
+              "Labrador"); console.log(rex.falar());
+            </div>
+          </div>
+
+          <div class="concept-card">
+            <div class="concept-title">
+              <span>🔒</span>
+              <span>Getters e Setters</span>
+            </div>
+
+            <div class="code-block">
+              class ContaBancaria { constructor(titular) { this.titular =
+              titular; this._saldo = 0; // propriedade "privada" } get saldo() {
+              return `R$ ${this._saldo.toFixed(2)}`; } set saldo(valor) { if
+              (valor >= 0) { this._saldo = valor; } else { console.log("Saldo
+              não pode ser negativo!"); } } depositar(valor) { this._saldo +=
+              valor; return `Depósito realizado! Saldo: ${this.saldo}`; } }
+              const conta = new ContaBancaria("Maria");
+              console.log(conta.depositar(100));
+            </div>
+          </div>
+        </div>
+
+        <div class="interactive-demo">
+          <h3>🎮 Demo: Sistema de RPG</h3>
+          <button class="demo-button" onclick="criarPersonagem()">
+            Criar Personagem ⚔️
+          </button>
+          <button class="demo-button" onclick="batalhar()">Batalhar 🥊</button>
+          <button class="demo-button" onclick="subirNivel()">
+            Subir Nível ⬆️
+          </button>
+          <div class="demo-output" id="output-rpg"></div>
+        </div>
+      </div>
+
+      <!-- Achievement -->
+      <div class="achievement" id="achievement">
+        <div class="celebration-emojis">🏆 🧠 🧰 📦 🎉</div>
+        <h2 style="color: #2e8b57; margin: 1rem 0">Parabéns! 🎊</h2>
+        <h3 style="color: #4682b4">Você é agora um Dominador de Objetos JS!</h3>
+        <p style="font-size: 1.2rem; margin-top: 1rem">
+          Você completou todos os níveis e domina os conceitos fundamentais de
+          objetos em JavaScript!
+        </p>
+        <div style="font-size: 2rem; margin-top: 1rem">💾 🧠 🔧 💻 ⚙️ 🚀</div>
+      </div>
+
+      <div class="navigation">
+        <button
+          class="nav-button"
+          id="prevBtn"
+          onclick="previousLevel()"
+          disabled>
+          ⬅️ Anterior
+        </button>
+        <button class="nav-button" id="nextBtn" onclick="nextLevel()">
+          Próximo ➡️
+        </button>
       </div>
     </div>
 
-    <div class="interactive-demo">
-      <h3>🎮 Demo Interativa: Criando seu Primeiro Objeto</h3>
-      <p>Clique no botão para ver um objeto sendo criado em tempo real!</p>
-      <button class="demo-button" onclick="criarObjetoBasico()">Criar Objeto Pessoa 👤</button>
-      <div class="demo-output" id="output-basico"></div>
-    </div>
-  </div>
+    <script>
+      let currentLevel = 0;
+      const totalLevels = 4;
 
-  <!-- Level 1: Iniciante -->
-  <div class="level-section" data-level="1">
-    <div class="level-header">
-      <span style="font-size: 3rem;">🤖</span>
-      <h2>Nível Iniciante</h2>
-    </div>
+      // Inventário para demo
+      let inventario = {
+        espada: 1,
+        pocao: 3,
+      };
 
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>➕</span>
-          <span>Adicionando Propriedades</span>
-        </div>
+      // Personagem RPG
+      let personagem = null;
 
-        <div class="code-block">
-          const jogador = {
-          nome: "Mario"
-          };
+      function updateProgress() {
+        document.querySelectorAll('.progress-step').forEach((step, index) => {
+          step.classList.toggle('active', index === currentLevel);
+        });
 
-          // Adicionando novas propriedades
-          jogador.pontos = 100;
-          jogador["vidas"] = 3;
-          jogador.poder = "Super";
-
-          console.log(jogador);
-          // { nome: "Mario", pontos: 100, vidas: 3, poder: "Super" }
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🗑️</span>
-          <span>Removendo Propriedades</span>
-        </div>
-
-        <div class="code-block">
-          const inventario = {
-          espada: 1,
-          escudo: 1,
-          pocao: 5,
-          lixo: "item inútil"
-          };
-
-          // Removendo propriedade
-          delete inventario.lixo;
-
-          console.log(inventario);
-          // { espada: 1, escudo: 1, pocao: 5 }
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🔄</span>
-          <span>Loop for...in</span>
-        </div>
-
-        <div class="code-block">
-          const pokemon = {
-          nome: "Pikachu",
-          tipo: "Elétrico",
-          nivel: 25,
-          hp: 100
-          };
-
-          // Percorrendo todas as propriedades
-          for (let propriedade in pokemon) {
-          console.log(`${propriedade}: ${pokemon[propriedade]}`);
-          }
-          // nome: Pikachu
-          // tipo: Elétrico
-          // nivel: 25
-          // hp: 100
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🔍</span>
-          <span>Verificando Propriedades</span>
-        </div>
-
-        <div class="code-block">
-          const usuario = {
-          nome: "João",
-          email: "joao@email.com"
-          };
-
-          // Verificando se propriedade existe
-          console.log("nome" in usuario);     // true
-          console.log("telefone" in usuario); // false
-
-          // Usando hasOwnProperty
-          console.log(usuario.hasOwnProperty("email")); // true
-        </div>
-      </div>
-    </div>
-
-    <div class="interactive-demo">
-      <h3>🎮 Demo: Gerenciador de Inventário</h3>
-      <button class="demo-button" onclick="adicionarItem()">Adicionar Item 📦</button>
-      <button class="demo-button" onclick="removerItem()">Remover Item 🗑️</button>
-      <button class="demo-button" onclick="listarItens()">Listar Itens 📋</button>
-      <div class="demo-output" id="output-inventario"></div>
-    </div>
-  </div>
-
-  <!-- Level 2: Intermediário -->
-  <div class="level-section" data-level="2">
-    <div class="level-header">
-      <span style="font-size: 3rem;">🤖⚙️</span>
-      <h2>Nível Intermediário</h2>
-    </div>
-
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🔑</span>
-          <span>Object.keys()</span>
-        </div>
-
-        <div class="code-block">
-          const loja = {
-          notebook: 2500,
-          mouse: 50,
-          teclado: 150,
-          monitor: 800
-          };
-
-          // Obtendo todas as chaves
-          const produtos = Object.keys(loja);
-          console.log(produtos);
-          // ["notebook", "mouse", "teclado", "monitor"]
-
-          // Contando produtos
-          console.log(`Temos ${produtos.length} produtos`);
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>💎</span>
-          <span>Object.values()</span>
-        </div>
-
-        <div class="code-block">
-          const notas = {
-          matematica: 8.5,
-          portugues: 9.0,
-          historia: 7.5,
-          ciencias: 8.0
-          };
-
-          // Obtendo todos os valores
-          const todasNotas = Object.values(notas);
-          console.log(todasNotas); // [8.5, 9.0, 7.5, 8.0]
-
-          // Calculando média
-          const media = todasNotas.reduce((a, b) => a + b) / todasNotas.length;
-          console.log(`Média: ${media}`); // Média: 8.25
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🔗</span>
-          <span>Object.entries()</span>
-        </div>
-
-        <div class="code-block">
-          const ranking = {
-          primeiro: "Ana",
-          segundo: "Bruno",
-          terceiro: "Carlos"
-          };
-
-          // Obtendo pares chave-valor
-          const posicoes = Object.entries(ranking);
-          console.log(posicoes);
-          // [["primeiro", "Ana"], ["segundo", "Bruno"], ["terceiro", "Carlos"]]
-
-          // Usando com forEach
-          posicoes.forEach(([posicao, nome]) => {
-          console.log(`${posicao}: ${nome}`);
+        document
+          .querySelectorAll('.level-section')
+          .forEach((section, index) => {
+            section.classList.toggle('active', index === currentLevel);
           });
-        </div>
-      </div>
 
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🎯</span>
-          <span>Destructuring</span>
-        </div>
+        document.getElementById('prevBtn').disabled = currentLevel === 0;
+        document.getElementById('nextBtn').disabled =
+          currentLevel === totalLevels - 1;
 
-        <div class="code-block">
-          const heroi = {
-          nome: "Superman",
-          poder: "Voo",
-          cidade: "Metrópolis",
-          identidade: "Clark Kent"
-          };
-
-          // Extraindo propriedades
-          const { nome, poder, cidade } = heroi;
-          console.log(nome);   // "Superman"
-          console.log(poder);  // "Voo"
-          console.log(cidade); // "Metrópolis"
-
-          // Com renomeação
-          const { identidade: nomeReal } = heroi;
-          console.log(nomeReal); // "Clark Kent"
-        </div>
-      </div>
-    </div>
-
-    <div class="interactive-demo">
-      <h3>🎮 Demo: Analisador de Dados</h3>
-      <button class="demo-button" onclick="analisarVendas()">Analisar Vendas 📊</button>
-      <button class="demo-button" onclick="extrairDados()">Extrair Dados 🎯</button>
-      <div class="demo-output" id="output-analise"></div>
-    </div>
-  </div>
-
-  <!-- Level 3: Avançado -->
-  <div class="level-section" data-level="3">
-    <div class="level-header">
-      <span style="font-size: 3rem;">🤖🚀</span>
-      <h2>Nível Avançado</h2>
-    </div>
-
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🏗️</span>
-          <span>Função Construtora</span>
-        </div>
-
-        <div class="code-block">
-          // Função construtora (como um molde)
-          function Carro(marca, modelo, ano) {
-          this.marca = marca;
-          this.modelo = modelo;
-          this.ano = ano;
-          this.acelerar = function() {
-          return `${this.marca} ${this.modelo} acelerando! 🚗💨`;
-          };
-          }
-
-          // Criando instâncias
-          const meuCarro = new Carro("Honda", "Civic", 2023);
-          const outroCarro = new Carro("Toyota", "Corolla", 2022);
-
-          console.log(meuCarro.acelerar());
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🧬</span>
-          <span>Prototype</span>
-        </div>
-
-        <div class="code-block">
-          // Adicionando método ao prototype
-          Carro.prototype.frear = function() {
-          return `${this.marca} ${this.modelo} freando! 🛑`;
-          };
-
-          // Todos os carros agora têm o método frear
-          console.log(meuCarro.frear());
-          console.log(outroCarro.frear());
-
-          // Verificando prototype
-          console.log(meuCarro.__proto__ === Carro.prototype); // true
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>👑</span>
-          <span>Classes (ES6)</span>
-        </div>
-
-        <div class="code-block">
-          class Animal {
-          constructor(nome, tipo) {
-          this.nome = nome;
-          this.tipo = tipo;
-          }
-
-          falar() {
-          return `${this.nome} faz algum som! 🔊`;
-          }
-          }
-
-          class Cachorro extends Animal {
-          constructor(nome, raca) {
-          super(nome, "Cachorro");
-          this.raca = raca;
-          }
-
-          falar() {
-          return `${this.nome} faz: Au au! 🐕`;
-          }
-          }
-
-          const rex = new Cachorro("Rex", "Labrador");
-          console.log(rex.falar());
-        </div>
-      </div>
-
-      <div class="concept-card">
-        <div class="concept-title">
-          <span>🔒</span>
-          <span>Getters e Setters</span>
-        </div>
-
-        <div class="code-block">
-          class ContaBancaria {
-          constructor(titular) {
-          this.titular = titular;
-          this._saldo = 0; // propriedade "privada"
-          }
-
-          get saldo() {
-          return `R$ ${this._saldo.toFixed(2)}`;
-          }
-
-          set saldo(valor) {
-          if (valor >= 0) {
-          this._saldo = valor;
-          } else {
-          console.log("Saldo não pode ser negativo!");
-          }
-          }
-
-          depositar(valor) {
-          this._saldo += valor;
-          return `Depósito realizado! Saldo: ${this.saldo}`;
-          }
-          }
-
-          const conta = new ContaBancaria("Maria");
-          console.log(conta.depositar(100));
-        </div>
-      </div>
-    </div>
-
-    <div class="interactive-demo">
-      <h3>🎮 Demo: Sistema de RPG</h3>
-      <button class="demo-button" onclick="criarPersonagem()">Criar Personagem ⚔️</button>
-      <button class="demo-button" onclick="batalhar()">Batalhar 🥊</button>
-      <button class="demo-button" onclick="subirNivel()">Subir Nível ⬆️</button>
-      <div class="demo-output" id="output-rpg"></div>
-    </div>
-  </div>
-
-  <!-- Achievement -->
-  <div class="achievement" id="achievement">
-    <div class="celebration-emojis">🏆 🧠 🧰 📦 🎉</div>
-    <h2 style="color: #2e8b57; margin: 1rem 0;">Parabéns! 🎊</h2>
-    <h3 style="color: #4682b4;">Você é agora um Dominador de Objetos JS!</h3>
-    <p style="font-size: 1.2rem; margin-top: 1rem;">
-      Você completou todos os níveis e domina os conceitos fundamentais de objetos em JavaScript!
-    </p>
-    <div style="font-size: 2rem; margin-top: 1rem;">
-      💾 🧠 🔧 💻 ⚙️ 🚀
-    </div>
-  </div>
-
-  <div class="navigation">
-    <button class="nav-button" id="prevBtn" onclick="previousLevel()" disabled>
-      ⬅️ Anterior
-    </button>
-    <button class="nav-button" id="nextBtn" onclick="nextLevel()">
-      Próximo ➡️
-    </button>
-  </div>
-</div>
-
-<script>
-  let currentLevel = 0;
-  const totalLevels = 4;
-
-  // Inventário para demo
-  let inventario = {
-    espada: 1,
-    pocao: 3
-  };
-
-  // Personagem RPG
-  let personagem = null;
-
-  function updateProgress() {
-    document.querySelectorAll('.progress-step').forEach((step, index) => {
-      step.classList.toggle('active', index === currentLevel);
-    });
-
-    document.querySelectorAll('.level-section').forEach((section, index) => {
-      section.classList.toggle('active', index === currentLevel);
-    });
-
-    document.getElementById('prevBtn').disabled = currentLevel === 0;
-    document.getElementById('nextBtn').disabled = currentLevel === totalLevels - 1;
-
-    if (currentLevel === totalLevels - 1) {
-      setTimeout(() => {
-        document.getElementById('achievement').classList.add('show');
-      }, 1000);
-    }
-  }
-
-  function nextLevel() {
-    if (currentLevel < totalLevels - 1) {
-      currentLevel++;
-      updateProgress();
-    }
-  }
-
-  function previousLevel() {
-    if (currentLevel > 0) {
-      currentLevel--;
-      updateProgress();
-    }
-  }
-
-  // Event listeners para progress steps
-  document.querySelectorAll('.progress-step').forEach((step, index) => {
-    step.addEventListener('click', () => {
-      currentLevel = index;
-      updateProgress();
-    });
-  });
-
-  // Demo functions
-  function criarObjetoBasico() {
-    const output = document.getElementById('output-basico');
-    const pessoa = {
-      nome: "João",
-      idade: 28,
-      profissao: "Desenvolvedor",
-      apresentar: function() {
-        return `Olá! Eu sou ${this.nome}, tenho ${this.idade} anos e sou ${this.profissao}! 👋`;
+        if (currentLevel === totalLevels - 1) {
+          setTimeout(() => {
+            document.getElementById('achievement').classList.add('show');
+          }, 1000);
+        }
       }
-    };
 
-    output.innerHTML = `
+      function nextLevel() {
+        if (currentLevel < totalLevels - 1) {
+          currentLevel++;
+          updateProgress();
+        }
+      }
+
+      function previousLevel() {
+        if (currentLevel > 0) {
+          currentLevel--;
+          updateProgress();
+        }
+      }
+
+      // Event listeners para progress steps
+      document.querySelectorAll('.progress-step').forEach((step, index) => {
+        step.addEventListener('click', () => {
+          currentLevel = index;
+          updateProgress();
+        });
+      });
+
+      // Demo functions
+      function criarObjetoBasico() {
+        const output = document.getElementById('output-basico');
+        const pessoa = {
+          nome: 'João',
+          idade: 28,
+          profissao: 'Desenvolvedor',
+          apresentar: function () {
+            return `Olá! Eu sou ${this.nome}, tenho ${this.idade} anos e sou ${this.profissao}! 👋`;
+          },
+        };
+
+        output.innerHTML = `
 > Objeto criado com sucesso! 🎉
 >
 > pessoa = {
@@ -1009,73 +1078,82 @@
 >
 > ${pessoa.apresentar()}
             `;
-  }
+      }
 
-  function adicionarItem() {
-    const itens = ['arco', 'flecha', 'armadura', 'anel', 'pergaminho'];
-    const item = itens[Math.floor(Math.random() * itens.length)];
-    inventario[item] = (inventario[item] || 0) + 1;
+      function adicionarItem() {
+        const itens = ['arco', 'flecha', 'armadura', 'anel', 'pergaminho'];
+        const item = itens[Math.floor(Math.random() * itens.length)];
+        inventario[item] = (inventario[item] || 0) + 1;
 
-    document.getElementById('output-inventario').innerHTML = `
+        document.getElementById('output-inventario').innerHTML = `
 > Item adicionado: ${item} ✨
 >
 > Inventário atual:
-${Object.entries(inventario).map(([item, qtd]) => `> ${item}: ${qtd}`).join('\n')}
+${Object.entries(inventario)
+  .map(([item, qtd]) => `> ${item}: ${qtd}`)
+  .join('\n')}
             `;
-  }
+      }
 
-  function removerItem() {
-    const chaves = Object.keys(inventario);
-    if (chaves.length === 0) {
-      document.getElementById('output-inventario').innerHTML = '> Inventário vazio! 📭';
-      return;
-    }
+      function removerItem() {
+        const chaves = Object.keys(inventario);
+        if (chaves.length === 0) {
+          document.getElementById('output-inventario').innerHTML =
+            '> Inventário vazio! 📭';
+          return;
+        }
 
-    const item = chaves[Math.floor(Math.random() * chaves.length)];
-    inventario[item]--;
-    if (inventario[item] <= 0) {
-      delete inventario[item];
-    }
+        const item = chaves[Math.floor(Math.random() * chaves.length)];
+        inventario[item]--;
+        if (inventario[item] <= 0) {
+          delete inventario[item];
+        }
 
-    document.getElementById('output-inventario').innerHTML = `
+        document.getElementById('output-inventario').innerHTML = `
 > Item removido: ${item} 🗑️
 >
 > Inventário atual:
-${Object.entries(inventario).map(([item, qtd]) => `> ${item}: ${qtd}`).join('\n')}
+${Object.entries(inventario)
+  .map(([item, qtd]) => `> ${item}: ${qtd}`)
+  .join('\n')}
             `;
-  }
+      }
 
-  function listarItens() {
-    const output = document.getElementById('output-inventario');
-    if (Object.keys(inventario).length === 0) {
-      output.innerHTML = '> Inventário vazio! 📭';
-      return;
-    }
+      function listarItens() {
+        const output = document.getElementById('output-inventario');
+        if (Object.keys(inventario).length === 0) {
+          output.innerHTML = '> Inventário vazio! 📭';
+          return;
+        }
 
-    output.innerHTML = `
+        output.innerHTML = `
 > 📋 INVENTÁRIO COMPLETO:
 >
 > Itens (${Object.keys(inventario).length}):
-${Object.entries(inventario).map(([item, qtd]) => `> • ${item}: ${qtd}x`).join('\n')}
+${Object.entries(inventario)
+  .map(([item, qtd]) => `> • ${item}: ${qtd}x`)
+  .join('\n')}
 >
 > Total de itens: ${Object.values(inventario).reduce((a, b) => a + b, 0)}
             `;
-  }
+      }
 
-  function analisarVendas() {
-    const vendas = {
-      janeiro: 15000,
-      fevereiro: 18000,
-      marco: 22000,
-      abril: 19000
-    };
+      function analisarVendas() {
+        const vendas = {
+          janeiro: 15000,
+          fevereiro: 18000,
+          marco: 22000,
+          abril: 19000,
+        };
 
-    const valores = Object.values(vendas);
-    const total = valores.reduce((a, b) => a + b);
-    const media = total / valores.length;
-    const melhorMes = Object.entries(vendas).reduce((a, b) => a[1] > b[1] ? a : b);
+        const valores = Object.values(vendas);
+        const total = valores.reduce((a, b) => a + b);
+        const media = total / valores.length;
+        const melhorMes = Object.entries(vendas).reduce((a, b) =>
+          a[1] > b[1] ? a : b
+        );
 
-    document.getElementById('output-analise').innerHTML = `
+        document.getElementById('output-analise').innerHTML = `
 > 📊 ANÁLISE DE VENDAS:
 >
 > Total: R$ ${total.toLocaleString()}
@@ -1083,25 +1161,32 @@ ${Object.entries(inventario).map(([item, qtd]) => `> • ${item}: ${qtd}x`).join
 > Melhor mês: ${melhorMes[0]} (R$ ${melhorMes[1].toLocaleString()})
 >
 > Detalhes por mês:
-${Object.entries(vendas).map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleString()}`).join('\n')}
+${Object.entries(vendas)
+  .map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleString()}`)
+  .join('\n')}
             `;
-  }
+      }
 
-  function extrairDados() {
-    const usuario = {
-      nome: "Ana Silva",
-      email: "ana@email.com",
-      endereco: {
-        rua: "Rua das Flores, 123",
-        cidade: "São Paulo",
-        cep: "01234-567"
-      },
-      hobbies: ["leitura", "natação", "culinária"]
-    };
+      function extrairDados() {
+        const usuario = {
+          nome: 'Ana Silva',
+          email: 'ana@email.com',
+          endereco: {
+            rua: 'Rua das Flores, 123',
+            cidade: 'São Paulo',
+            cep: '01234-567',
+          },
+          hobbies: ['leitura', 'natação', 'culinária'],
+        };
 
-    const { nome, email, endereco: { cidade }, hobbies } = usuario;
+        const {
+          nome,
+          email,
+          endereco: { cidade },
+          hobbies,
+        } = usuario;
 
-    document.getElementById('output-analise').innerHTML = `
+        document.getElementById('output-analise').innerHTML = `
 > 🎯 DADOS EXTRAÍDOS COM DESTRUCTURING:
 >
 > Nome: ${nome}
@@ -1112,40 +1197,40 @@ ${Object.entries(vendas).map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleStr
 > Objeto original preservado:
 > ${JSON.stringify(usuario, null, 2)}
             `;
-  }
-
-  function criarPersonagem() {
-    class Personagem {
-      constructor(nome, classe) {
-        this.nome = nome;
-        this.classe = classe;
-        this.nivel = 1;
-        this.hp = 100;
-        this.xp = 0;
       }
 
-      atacar() {
-        const dano = Math.floor(Math.random() * 20) + this.nivel * 5;
-        return `${this.nome} ataca e causa ${dano} de dano! ⚔️`;
-      }
+      function criarPersonagem() {
+        class Personagem {
+          constructor(nome, classe) {
+            this.nome = nome;
+            this.classe = classe;
+            this.nivel = 1;
+            this.hp = 100;
+            this.xp = 0;
+          }
 
-      subirNivel() {
-        this.nivel++;
-        this.hp += 20;
-        this.xp = 0;
-        return `${this.nome} subiu para o nível ${this.nivel}! 🆙`;
-      }
-    }
+          atacar() {
+            const dano = Math.floor(Math.random() * 20) + this.nivel * 5;
+            return `${this.nome} ataca e causa ${dano} de dano! ⚔️`;
+          }
 
-    const nomes = ["Aragorn", "Legolas", "Gimli", "Gandalf"];
-    const classes = ["Guerreiro", "Arqueiro", "Anão", "Mago"];
+          subirNivel() {
+            this.nivel++;
+            this.hp += 20;
+            this.xp = 0;
+            return `${this.nome} subiu para o nível ${this.nivel}! 🆙`;
+          }
+        }
 
-    const nome = nomes[Math.floor(Math.random() * nomes.length)];
-    const classe = classes[Math.floor(Math.random() * classes.length)];
+        const nomes = ['Aragorn', 'Legolas', 'Gimli', 'Gandalf'];
+        const classes = ['Guerreiro', 'Arqueiro', 'Anão', 'Mago'];
 
-    personagem = new Personagem(nome, classe);
+        const nome = nomes[Math.floor(Math.random() * nomes.length)];
+        const classe = classes[Math.floor(Math.random() * classes.length)];
 
-    document.getElementById('output-rpg').innerHTML = `
+        personagem = new Personagem(nome, classe);
+
+        document.getElementById('output-rpg').innerHTML = `
 > ⚔️ PERSONAGEM CRIADO!
 >
 > Nome: ${personagem.nome}
@@ -1156,18 +1241,19 @@ ${Object.entries(vendas).map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleStr
 >
 > Personagem pronto para aventuras! 🗡️
             `;
-  }
+      }
 
-  function batalhar() {
-    if (!personagem) {
-      document.getElementById('output-rpg').innerHTML = '> Crie um personagem primeiro! 🤖';
-      return;
-    }
+      function batalhar() {
+        if (!personagem) {
+          document.getElementById('output-rpg').innerHTML =
+            '> Crie um personagem primeiro! 🤖';
+          return;
+        }
 
-    const resultado = personagem.atacar();
-    personagem.xp += Math.floor(Math.random() * 30) + 10;
+        const resultado = personagem.atacar();
+        personagem.xp += Math.floor(Math.random() * 30) + 10;
 
-    document.getElementById('output-rpg').innerHTML = `
+        document.getElementById('output-rpg').innerHTML = `
 > 🥊 BATALHA!
 >
 > ${resultado}
@@ -1178,24 +1264,31 @@ ${Object.entries(vendas).map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleStr
 > • HP: ${personagem.hp}
 > • XP: ${personagem.xp}/100
 >
-> ${personagem.xp >= 100 ? 'Pronto para subir de nível! ⬆️' : 'Continue batalhando para ganhar XP! 💪'}
+> ${
+          personagem.xp >= 100
+            ? 'Pronto para subir de nível! ⬆️'
+            : 'Continue batalhando para ganhar XP! 💪'
+        }
             `;
-  }
+      }
 
-  function subirNivel() {
-    if (!personagem) {
-      document.getElementById('output-rpg').innerHTML = '> Crie um personagem primeiro! 🤖';
-      return;
-    }
+      function subirNivel() {
+        if (!personagem) {
+          document.getElementById('output-rpg').innerHTML =
+            '> Crie um personagem primeiro! 🤖';
+          return;
+        }
 
-    if (personagem.xp < 100) {
-      document.getElementById('output-rpg').innerHTML = `> XP insuficiente! Atual: ${personagem.xp}/100 ❌`;
-      return;
-    }
+        if (personagem.xp < 100) {
+          document.getElementById(
+            'output-rpg'
+          ).innerHTML = `> XP insuficiente! Atual: ${personagem.xp}/100 ❌`;
+          return;
+        }
 
-    const resultado = personagem.subirNivel();
+        const resultado = personagem.subirNivel();
 
-    document.getElementById('output-rpg').innerHTML = `
+        document.getElementById('output-rpg').innerHTML = `
 > 🆙 LEVEL UP!
 >
 > ${resultado}
@@ -1207,10 +1300,45 @@ ${Object.entries(vendas).map(([mes, valor]) => `> ${mes}: R$ ${valor.toLocaleStr
 >
 > Seu personagem ficou mais forte! 💪✨
             `;
-  }
+      }
 
-  // Initialize
-  updateProgress();
-</script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b1fb90e1111ace',t:'MTc1NDUxOTQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+      // Initialize
+      updateProgress();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement('script');
+            d.innerHTML =
+              "window.__CF$cv$params={r:'96b1fb90e1111ace',t:'MTc1NDUxOTQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName('head')[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement('iframe');
+          a.height = 1;
+          a.width = 1;
+          a.style.position = 'absolute';
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = 'none';
+          a.style.visibility = 'hidden';
+          document.body.appendChild(a);
+          if ('loading' !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener('DOMContentLoaded', c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              'loading' !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
 </html>
